@@ -466,6 +466,8 @@ parse_oxm_entry(struct ofl_match *match, const struct oxm_field *f,
         /* TCP header. */
         case OFI_OXM_OF_TCP_SRC:
         case OFI_OXM_OF_TCP_DST:
+        case OFI_OXM_OF_TCP_SEQ:
+        case OFI_OXM_OF_TCP_ACK:
         /* UDP header. */
         case OFI_OXM_OF_UDP_SRC:
         case OFI_OXM_OF_UDP_DST:
