@@ -205,7 +205,7 @@
 #define OXM_OF_IPV6_ND_SLL  OXM_HEADER (0x8000, 32, 6)
 
 /* IPv6 dnd target*/
-#define OXM_OF_IPV6_ND_TLL  OXM_HEADER  (0x8000, 32, 6)
+#define OXM_OF_IPV6_ND_TLL  OXM_HEADER  (0x8000, 33, 6)
 
 /* MPLS label. */
 #define OXM_OF_MPLS_LABEL OXM_HEADER (0x8000, 34, 4)
@@ -225,10 +225,10 @@
 #define OXM_OF_IPV6_EXTHDR_W  OXM_HEADER_W  (0x8000, 39, 2)
 
 /* TCP sequence number. */
-#define    OXM_OF_TCP_SEQ    OXM_HEADER    (0x8000, 57, 4)
+#define    OXM_OF_TCP_SEQ    OXM_HEADER    (0x8000, 40, 4)
 
 /* TCP ack number. */
-#define    OXM_OF_TCP_ACK    OXM_HEADER    (0x8000, 58, 4)
+#define    OXM_OF_TCP_ACK    OXM_HEADER    (0x8000, 41, 4)
 
 /* ## ------------------------------- ## */
 /* ## IPv6 compatible fields. ## */
@@ -290,7 +290,7 @@ enum oxm_field_index {
 #define DEFINE_FIELD(HEADER,DL_TYPES, NW_PROTO, MASKABLE) \
         OFI_OXM_##HEADER,
 #include "oxm-match.def"
-    NUM_OXM_FIELDS = 59
+    NUM_OXM_FIELDS = 56+2
 };
 
 struct oxm_field {
