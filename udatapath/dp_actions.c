@@ -220,6 +220,26 @@ set_field(struct packet *pkt, struct ofl_action_set_field *act )
 
                 break;
             }
+            case OXM_OF_TCP_SEQ:{
+                struct tcp_header *tcp = pkt->handle_std->proto->tcp;
+                uint32_t v = *(uint32_t*) act->field->value;
+                v += tcp->tcp_seq;
+                v = htons(v);
+                tcp->tcp_csum = recalc_csum16(tcp->tcp_csum, tcp->tcp_seq, v);
+                memcpy(&tcp->tcp_seq, &v, OXM_LENGTH(act->field->header));
+
+                break;
+            }
+            case OXM_OF_TCP_ACK:{
+                struct tcp_header *tcp = pkt->handle_std->proto->tcp;
+                uint32_t v = *(uint32_t*) act->field;
+                v += tcp->tcp_ack;
+                v = htons(v);
+                tcp->tcp_csum = recalc_csum16(tcp->tcp_sum, tcp->tcp_ack, v);
+                memcpy(&tcp->tcp_ack, &v, OXM_LENGTH(act->field_header));
+
+                break;
+            }
             case OXM_OF_UDP_SRC:{
                 struct udp_header *udp = pkt->handle_std->proto->udp;
                 uint16_t v = htons(*(uint16_t*) act->field->value);
