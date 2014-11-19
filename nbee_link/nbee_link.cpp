@@ -551,9 +551,9 @@ extern "C" int nblink_packet_parse(struct ofpbuf * pktin,  struct ofl_match * pk
                 PDMLReader->GetPDMLField(proto->Name, (char*) "dport", proto->FirstField, &field);
                 nblink_extract_proto_fields(pktin, field, pktout, OXM_OF_TCP_DST);
                 PDMLReader->GetPDMLField(proto->Name, (char*) "seq", proto->FirstField, &field);
-                nblink_extract_proto_fields(pktin, field, pktout, OXM_OF_TCP_SEQ):
+                nblink_extract_proto_fields(pktin, field, pktout, OXM_OF_TCP_SEQ);
                 PDMLReader->GetPDMLField(proto->Name, (char*) "ack", proto->FirstField, &field);
-                nblink_extract_proto_fields(pktin, fiel, pktout, OXM_OF_TCP_ACK);
+                nblink_extract_proto_fields(pktin, field, pktout, OXM_OF_TCP_ACK);
             }
             else if (protocol_Name.compare("udp") == 0 && pkt_proto->udp == NULL)
             {
