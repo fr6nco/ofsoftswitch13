@@ -236,7 +236,7 @@ set_field(struct packet *pkt, struct ofl_action_set_field *act )
                 v += tcp->tcp_ack;
                 v = htons(v);
                 tcp->tcp_csum = recalc_csum16(tcp->tcp_sum, tcp->tcp_ack, v);
-                memcpy(&tcp->tcp_ack, &v, OXM_LENGTH(act->field_header));
+                memcpy(&tcp->tcp_ack, &v, OXM_LENGTH(act->field->header));
 
                 break;
             }
