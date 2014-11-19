@@ -248,33 +248,33 @@
 #define OXM_OF_IPV6_HBH_OPT_VALUE OXM_HEADER_VL (0x0002, 10)
 
 /* IPv6 Destination Option EH ID*/
-#define OXM_OF_IPV6_DOH_ID OXM_HEADER (0x0002, 16, 1)
-#define OXM_OF_IPV6_DOH_ID_W OXM_HEADER_W (0x0002, 16, 1)
+#define OXM_OF_IPV6_DOH_ID OXM_HEADER (0x0002, 18, 1)
+#define OXM_OF_IPV6_DOH_ID_W OXM_HEADER_W (0x0002, 18, 1)
 
-#define OXM_OF_IPV6_DOH_OPT_CODE OXM_HEADER (0x0002, 17, 1)
+#define OXM_OF_IPV6_DOH_OPT_CODE OXM_HEADER (0x0002, 19, 1)
 
-#define OXM_OF_IPV6_DOH_OPT_VALUE OXM_HEADER_VL (0x0002, 18)
+#define OXM_OF_IPV6_DOH_OPT_VALUE OXM_HEADER_VL (0x0002, 20)
 
 
 /* IPv6 Routing EH ID*/
-#define OXM_OF_IPV6_RH_ID OXM_HEADER (0x0002, 24, 1)
-#define OXM_OF_IPV6_RH_ID_W OXM_HEADER_W (0x0002, 24, 1)
+#define OXM_OF_IPV6_RH_ID OXM_HEADER (0x0002, 26, 1)
+#define OXM_OF_IPV6_RH_ID_W OXM_HEADER_W (0x0002, 26, 1)
 
-#define OXM_OF_IPV6_RH_ADDRESS OXM_HEADER (0x0002, 25, 16)
+#define OXM_OF_IPV6_RH_ADDRESS OXM_HEADER (0x0002, 27, 16)
 
 /* IPv6 Fragmentation EH ID*/
-#define OXM_OF_IPV6_FH_ID OXM_HEADER (0x0002, 32, 1)
-#define OXM_OF_IPV6_FH_ID_W OXM_HEADER_W (0x0002, 32, 1)
+#define OXM_OF_IPV6_FH_ID OXM_HEADER (0x0002, 34, 1)
+#define OXM_OF_IPV6_FH_ID_W OXM_HEADER_W (0x0002, 34, 1)
 
 /* IPv6 Authentication EH ID*/
-#define OXM_OF_IPV6_AH_ID OXM_HEADER (0x0002, 40, 1)
-#define OXM_OF_IPV6_AH_ID_W OXM_HEADER_W (0x0002, 40, 1)
+#define OXM_OF_IPV6_AH_ID OXM_HEADER (0x0002, 42, 1)
+#define OXM_OF_IPV6_AH_ID_W OXM_HEADER_W (0x0002, 42, 1)
 
 /* IPv6 Encapsulating Security Payload */
-#define OXM_OF_IPV6_ESP_ID OXM_HEADER (0x0002, 48, 1)
+#define OXM_OF_IPV6_ESP_ID OXM_HEADER (0x0002, 50, 1)
 
 /* IPv6 Mobility EH */
-#define OXM_OF_IPV6_MH_ID OXM_HEADER (0x0002, 56, 1)
+#define OXM_OF_IPV6_MH_ID OXM_HEADER (0x0002, 58, 1)
 
 /* ## ------------------------------- ## */
 /* ## TTL fields. ## */
@@ -290,7 +290,7 @@ enum oxm_field_index {
 #define DEFINE_FIELD(HEADER,DL_TYPES, NW_PROTO, MASKABLE) \
         OFI_OXM_##HEADER,
 #include "oxm-match.def"
-    NUM_OXM_FIELDS = 56
+    NUM_OXM_FIELDS = 58
 };
 
 struct oxm_field {
