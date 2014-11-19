@@ -143,92 +143,92 @@
  /* TCP destination port. */
 #define    OXM_OF_TCP_DST    OXM_HEADER    (0x8000, 14, 2)
  
-/* TCP sequence number. */
-#define    OXM_OF_TCP_SEQ    OXM_HEADER    (0x8000, 15, 4)
-
-/* TCP ack number. */
-#define    OXM_OF_TCP_ACK    OXM_HEADER    (0x8000, 16, 4)
-
 /* UDP source port. */
-#define    OXM_OF_UDP_SRC      OXM_HEADER  (0x8000, 17, 2)
+#define    OXM_OF_UDP_SRC      OXM_HEADER  (0x8000, 15, 2)
 
  /* UDP destination port. */
-#define    OXM_OF_UDP_DST    OXM_HEADER    (0x8000, 18, 2)
+#define    OXM_OF_UDP_DST    OXM_HEADER    (0x8000, 16, 2)
 
 /* SCTP source port. */
-#define    OXM_OF_SCTP_SRC      OXM_HEADER  (0x8000, 19, 2)
+#define    OXM_OF_SCTP_SRC      OXM_HEADER  (0x8000, 17, 2)
 
  /* SCTP destination port. */
-#define    OXM_OF_SCTP_DST    OXM_HEADER    (0x8000, 20, 2)
+#define    OXM_OF_SCTP_DST    OXM_HEADER    (0x8000, 18, 2)
 
 /* ICMPv4 type. */
-#define    OXM_OF_ICMPV4_TYPE   OXM_HEADER  (0x8000, 21, 1)
+#define    OXM_OF_ICMPV4_TYPE   OXM_HEADER  (0x8000, 19, 1)
 
 /* ICMPv4 code. */
-#define    OXM_OF_ICMPV4_CODE   OXM_HEADER  (0x8000, 22, 1)
+#define    OXM_OF_ICMPV4_CODE   OXM_HEADER  (0x8000, 20, 1)
 
  /* ARP operation code. */
-#define    OXM_OF_ARP_OP      OXM_HEADER  (0x8000,23, 2)
+#define    OXM_OF_ARP_OP      OXM_HEADER  (0x8000,21, 2)
 
  /* IPv4 source address of ARP. */
-#define    OXM_OF_ARP_SPA      OXM_HEADER  (0x8000,24, 4)
-#define    OXM_OF_ARP_SPA_W  OXM_HEADER_W  (0x8000,24, 4)
+#define    OXM_OF_ARP_SPA      OXM_HEADER  (0x8000,22, 4)
+#define    OXM_OF_ARP_SPA_W  OXM_HEADER_W  (0x8000,22, 4)
 
 /* IPv4 destination address of ARP. */
-#define    OXM_OF_ARP_TPA     OXM_HEADER    (0x8000,25 , 4)
-#define    OXM_OF_ARP_TPA_W   OXM_HEADER_W  (0x8000,25 , 4)
+#define    OXM_OF_ARP_TPA     OXM_HEADER    (0x8000,23 , 4)
+#define    OXM_OF_ARP_TPA_W   OXM_HEADER_W  (0x8000,23 , 4)
 
 /* ARP Ethernet destination address.*/
-#define    OXM_OF_ARP_SHA   OXM_HEADER  (0x8000,26,6)
-#define    OXM_OF_ARP_SHA_W OXM_HEADER_W(0x8000,26,6)
+#define    OXM_OF_ARP_SHA   OXM_HEADER  (0x8000,24,6)
+#define    OXM_OF_ARP_SHA_W OXM_HEADER_W(0x8000,24,6)
 
 /* ARP Ethernet source address.*/
-#define    OXM_OF_ARP_THA   OXM_HEADER  (0x8000, 27,6)
-#define    OXM_OF_ARP_THA_W OXM_HEADER_W(0x8000,27,6)
+#define    OXM_OF_ARP_THA   OXM_HEADER  (0x8000, 25,6)
+#define    OXM_OF_ARP_THA_W OXM_HEADER_W(0x8000,25,6)
 
 /* IPv6 source address */
-#define OXM_OF_IPV6_SRC OXM_HEADER (0x8000, 28, 16)
-#define OXM_OF_IPV6_SRC_W OXM_HEADER_W(0x8000, 28, 16)
+#define OXM_OF_IPV6_SRC OXM_HEADER (0x8000, 26, 16)
+#define OXM_OF_IPV6_SRC_W OXM_HEADER_W(0x8000, 26, 16)
 
 /* IPv6 destination address*/
-#define OXM_OF_IPV6_DST   OXM_HEADER (0x8000, 29, 16)
-#define OXM_OF_IPV6_DST_W OXM_HEADER_W(0x8000, 29, 16)
+#define OXM_OF_IPV6_DST   OXM_HEADER (0x8000, 27, 16)
+#define OXM_OF_IPV6_DST_W OXM_HEADER_W(0x8000, 27, 16)
 
 /* IPv6 flow label*/
-#define OXM_OF_IPV6_FLABEL   OXM_HEADER (0x8000, 30, 4)
-#define OXM_OF_IPV6_FLABEL_W OXM_HEADER_W (0x8000, 30, 4)
+#define OXM_OF_IPV6_FLABEL   OXM_HEADER (0x8000, 28, 4)
+#define OXM_OF_IPV6_FLABEL_W OXM_HEADER_W (0x8000, 28, 4)
 
 /* ICMPv6 message type field */
-#define OXM_OF_ICMPV6_TYPE OXM_HEADER (0x8000, 31, 1)
+#define OXM_OF_ICMPV6_TYPE OXM_HEADER (0x8000, 29, 1)
 
 /* ICMPv6 type code */
-#define OXM_OF_ICMPV6_CODE OXM_HEADER (0x8000, 32, 1)
+#define OXM_OF_ICMPV6_CODE OXM_HEADER (0x8000, 30, 1)
 
 /* IPv6 nd target*/
-#define OXM_OF_IPV6_ND_TARGET   OXM_HEADER (0x8000, 33, 16)
+#define OXM_OF_IPV6_ND_TARGET   OXM_HEADER (0x8000, 31, 16)
 
 /* IPv6 nd target*/
-#define OXM_OF_IPV6_ND_SLL  OXM_HEADER (0x8000, 34, 6)
+#define OXM_OF_IPV6_ND_SLL  OXM_HEADER (0x8000, 32, 6)
 
 /* IPv6 dnd target*/
-#define OXM_OF_IPV6_ND_TLL  OXM_HEADER  (0x8000, 35, 6)
+#define OXM_OF_IPV6_ND_TLL  OXM_HEADER  (0x8000, 32, 6)
 
 /* MPLS label. */
-#define OXM_OF_MPLS_LABEL OXM_HEADER (0x8000, 36, 4)
+#define OXM_OF_MPLS_LABEL OXM_HEADER (0x8000, 34, 4)
 
 /* MPLS TC. */
-#define OXM_OF_MPLS_TC OXM_HEADER       (0x8000, 37, 1)
+#define OXM_OF_MPLS_TC OXM_HEADER       (0x8000, 35, 1)
 
-#define OXM_OF_MPLS_BOS OXM_HEADER      (0x8000, 38, 1)
+#define OXM_OF_MPLS_BOS OXM_HEADER      (0x8000, 36, 1)
 
-#define OXM_OF_PBB_ISID OXM_HEADER      (0x8000, 39, 4)
-#define OXM_OF_PBB_ISID_W OXM_HEADER_W  (0x8000, 39, 4)
+#define OXM_OF_PBB_ISID OXM_HEADER      (0x8000, 37, 4)
+#define OXM_OF_PBB_ISID_W OXM_HEADER_W  (0x8000, 37, 4)
 
-#define OXM_OF_TUNNEL_ID OXM_HEADER     (0x8000, 40, 8)
-#define OXM_OF_TUNNEL_ID_W OXM_HEADER_W (0x8000, 40, 8)
+#define OXM_OF_TUNNEL_ID OXM_HEADER     (0x8000, 38, 8)
+#define OXM_OF_TUNNEL_ID_W OXM_HEADER_W (0x8000, 38, 8)
 
-#define OXM_OF_IPV6_EXTHDR  OXM_HEADER      (0x8000, 41, 2)
-#define OXM_OF_IPV6_EXTHDR_W  OXM_HEADER_W  (0x8000, 41, 2)
+#define OXM_OF_IPV6_EXTHDR  OXM_HEADER      (0x8000, 39, 2)
+#define OXM_OF_IPV6_EXTHDR_W  OXM_HEADER_W  (0x8000, 39, 2)
+
+/* TCP sequence number. */
+#define    OXM_OF_TCP_SEQ    OXM_HEADER    (0x8000, 57, 4)
+
+/* TCP ack number. */
+#define    OXM_OF_TCP_ACK    OXM_HEADER    (0x8000, 58, 4)
 
 /* ## ------------------------------- ## */
 /* ## IPv6 compatible fields. ## */
@@ -248,33 +248,33 @@
 #define OXM_OF_IPV6_HBH_OPT_VALUE OXM_HEADER_VL (0x0002, 10)
 
 /* IPv6 Destination Option EH ID*/
-#define OXM_OF_IPV6_DOH_ID OXM_HEADER (0x0002, 18, 1)
-#define OXM_OF_IPV6_DOH_ID_W OXM_HEADER_W (0x0002, 18, 1)
+#define OXM_OF_IPV6_DOH_ID OXM_HEADER (0x0002, 16, 1)
+#define OXM_OF_IPV6_DOH_ID_W OXM_HEADER_W (0x0002, 16, 1)
 
-#define OXM_OF_IPV6_DOH_OPT_CODE OXM_HEADER (0x0002, 19, 1)
+#define OXM_OF_IPV6_DOH_OPT_CODE OXM_HEADER (0x0002, 17, 1)
 
-#define OXM_OF_IPV6_DOH_OPT_VALUE OXM_HEADER_VL (0x0002, 20)
+#define OXM_OF_IPV6_DOH_OPT_VALUE OXM_HEADER_VL (0x0002, 18)
 
 
 /* IPv6 Routing EH ID*/
-#define OXM_OF_IPV6_RH_ID OXM_HEADER (0x0002, 26, 1)
+#define OXM_OF_IPV6_RH_ID OXM_HEADER (0x0002, 24, 1)
 #define OXM_OF_IPV6_RH_ID_W OXM_HEADER_W (0x0002, 26, 1)
 
-#define OXM_OF_IPV6_RH_ADDRESS OXM_HEADER (0x0002, 27, 16)
+#define OXM_OF_IPV6_RH_ADDRESS OXM_HEADER (0x0002, 25, 16)
 
 /* IPv6 Fragmentation EH ID*/
-#define OXM_OF_IPV6_FH_ID OXM_HEADER (0x0002, 34, 1)
-#define OXM_OF_IPV6_FH_ID_W OXM_HEADER_W (0x0002, 34, 1)
+#define OXM_OF_IPV6_FH_ID OXM_HEADER (0x0002, 32, 1)
+#define OXM_OF_IPV6_FH_ID_W OXM_HEADER_W (0x0002, 32, 1)
 
 /* IPv6 Authentication EH ID*/
-#define OXM_OF_IPV6_AH_ID OXM_HEADER (0x0002, 42, 1)
-#define OXM_OF_IPV6_AH_ID_W OXM_HEADER_W (0x0002, 42, 1)
+#define OXM_OF_IPV6_AH_ID OXM_HEADER (0x0002, 40, 1)
+#define OXM_OF_IPV6_AH_ID_W OXM_HEADER_W (0x0002, 40, 1)
 
 /* IPv6 Encapsulating Security Payload */
-#define OXM_OF_IPV6_ESP_ID OXM_HEADER (0x0002, 50, 1)
+#define OXM_OF_IPV6_ESP_ID OXM_HEADER (0x0002, 48, 1)
 
 /* IPv6 Mobility EH */
-#define OXM_OF_IPV6_MH_ID OXM_HEADER (0x0002, 58, 1)
+#define OXM_OF_IPV6_MH_ID OXM_HEADER (0x0002, 56, 1)
 
 /* ## ------------------------------- ## */
 /* ## TTL fields. ## */
@@ -290,7 +290,7 @@ enum oxm_field_index {
 #define DEFINE_FIELD(HEADER,DL_TYPES, NW_PROTO, MASKABLE) \
         OFI_OXM_##HEADER,
 #include "oxm-match.def"
-    NUM_OXM_FIELDS = 58
+    NUM_OXM_FIELDS = 59
 };
 
 struct oxm_field {
