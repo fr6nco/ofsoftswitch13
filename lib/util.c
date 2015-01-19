@@ -60,7 +60,7 @@ xcalloc(size_t count, size_t size)
 void *
 xmalloc(size_t size) 
 {
-    void *p = malloc(size ? size : 1);
+    void *p = (char*) malloc(size ? size : 1);
     if (p == NULL) {
         out_of_memory();
     }
