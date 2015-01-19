@@ -221,6 +221,8 @@ flow_table_lookup(struct flow_table *table, struct packet *pkt) {
 
         m = entry->match == NULL ? entry->stats->match : entry->match;
 
+        VLOG_WARN_RL(LOG_MODULE, &rl, "m should be now initialized, see what is echoes (%u).", m->type);
+
         /* select appropriate handler, based on match type of flow entry. */
         switch (m->type) {
             case (OFPMT_OXM): {
