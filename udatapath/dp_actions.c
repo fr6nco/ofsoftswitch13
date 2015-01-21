@@ -233,12 +233,12 @@ set_field(struct packet *pkt, struct ofl_action_set_field *act )
             case OXM_OF_TCP_ACK:{
                 struct tcp_header *tcp = pkt->handle_std->proto->tcp;
                 uint32_t v = *(uint32_t*) act->field->value;
-                VLOG_DBG_RL(LOG_MODULE, &rl, "Value in the action is: %u", v);
-                VLOG_DBG_RL(LOG_MODULE, &rl, "Value ACK in the packet is: %u", tcp->tcp_ack);
-                v += tcp->tcp_ack;
-                VLOG_DBG_RL(LOG_MODULE, &rl, "Value v after adding is %u", v);
-                v = htons(v);
-                VLOG_DBG_RL(LOG_MODULE, &rl, "Value v after htons is: %u", v);
+                VLOG_DBG_RL(LOG_MODULE, &rl, "Value in the action is: %zu", v);
+                VLOG_DBG_RL(LOG_MODULE, &rl, "Value ACK in the packet is: %zu", tcp->tcp_ack);
+                v += ntohl(tcp->tcp_ack);
+                VLOG_DBG_RL(LOG_MODULE, &rl, "Value v after adding is %zu", v);
+                v = htonl(v);
+                VLOG_DBG_RL(LOG_MODULE, &rl, "Value v after htons is: %zu", v);
                 tcp->tcp_csum = recalc_csum16(tcp->tcp_csum, tcp->tcp_ack, v);
                 memcpy(&tcp->tcp_ack, &v, OXM_LENGTH(act->field->header));
 
