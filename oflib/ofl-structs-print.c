@@ -266,6 +266,12 @@ ofl_structs_oxm_tlv_print(FILE *stream, struct ofl_match_tlv *f)
 		case OFPXMT_OFB_TCP_DST:
 			fprintf(stream, "tcp_dst=\"%d\"", *((uint16_t*) f->value));
 			break;
+		case OFPXMT_OFB_TCP_SEQ:
+			fprintf(stream, "tcp_seq=\"+%d\"", *((uint32_t*) f->value));
+			break;
+		case OFPXMT_OFB_TCP_ACK:
+			fprintf(stream, "tcp_ack=\"+%d\"", *((uint32_t*) f->value));
+			break;
 		case OFPXMT_OFB_UDP_SRC:
 			fprintf(stream, "udp_src=\"%d\"", *((uint16_t*) f->value));
 			break;
