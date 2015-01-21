@@ -223,8 +223,8 @@ set_field(struct packet *pkt, struct ofl_action_set_field *act )
             case OXM_OF_TCP_SEQ:{
                 struct tcp_header *tcp = pkt->handle_std->proto->tcp;
                 uint32_t v = *(uint32_t*) act->field->value;
-                v += tcp->tcp_seq;
-                v = htons(v);
+                v += ntohl(tcp->tcp_seq);
+                v = htonl(v);
                 tcp->tcp_csum = recalc_csum16(tcp->tcp_csum, tcp->tcp_seq, v);
                 memcpy(&tcp->tcp_seq, &v, OXM_LENGTH(act->field->header));
 
@@ -233,12 +233,8 @@ set_field(struct packet *pkt, struct ofl_action_set_field *act )
             case OXM_OF_TCP_ACK:{
                 struct tcp_header *tcp = pkt->handle_std->proto->tcp;
                 uint32_t v = *(uint32_t*) act->field->value;
-                VLOG_DBG_RL(LOG_MODULE, &rl, "Value in the action is: %" PRIu32 " ", v);
-                VLOG_DBG_RL(LOG_MODULE, &rl, "Value ACK in the packet is: %" PRIu32 " ", tcp->tcp_ack);
                 v += ntohl(tcp->tcp_ack);
-                VLOG_DBG_RL(LOG_MODULE, &rl, "Value v after adding is %" PRIu32 " ", v);
                 v = htonl(v);
-                VLOG_DBG_RL(LOG_MODULE, &rl, "Value v after htons is: %" PRIu32 " ", v);
                 tcp->tcp_csum = recalc_csum16(tcp->tcp_csum, tcp->tcp_ack, v);
                 memcpy(&tcp->tcp_ack, &v, OXM_LENGTH(act->field->header));
 
