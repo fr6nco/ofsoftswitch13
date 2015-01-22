@@ -225,7 +225,7 @@ set_field(struct packet *pkt, struct ofl_action_set_field *act )
                 uint32_t v = *(uint32_t*) act->field->value;
                 v += ntohl(tcp->tcp_seq);
                 v = htonl(v);
-                tcp->tcp_csum = recalc_csum16(tcp->tcp_csum, tcp->tcp_seq, v);
+                tcp->tcp_csum = recalc_csum32(tcp->tcp_csum, tcp->tcp_seq, v);
                 memcpy(&tcp->tcp_seq, &v, OXM_LENGTH(act->field->header));
 
                 break;
@@ -235,7 +235,7 @@ set_field(struct packet *pkt, struct ofl_action_set_field *act )
                 uint32_t v = *(uint32_t*) act->field->value;
                 v += ntohl(tcp->tcp_ack);
                 v = htonl(v);
-                tcp->tcp_csum = recalc_csum16(tcp->tcp_csum, tcp->tcp_ack, v);
+                tcp->tcp_csum = recalc_csum32(tcp->tcp_csum, tcp->tcp_ack, v);
                 memcpy(&tcp->tcp_ack, &v, OXM_LENGTH(act->field->header));
 
                 break;
