@@ -223,8 +223,11 @@ set_field(struct packet *pkt, struct ofl_action_set_field *act )
             case OXM_OF_TCP_SEQ:{
                 struct tcp_header *tcp = pkt->handle_std->proto->tcp;
                 uint32_t v = *(uint32_t*) act->field->value;
+                VLOG_DBG_RL(LOG_MODULE, &rl, "Value in the action is: %" PRIu32 " ", v);
                 v += ntohl(tcp->tcp_seq);
+                VLOG_DBG_RL(LOG_MODULE, &rl, "Value after adding current ack to it unendianed: %" PRIu32 " ", v);
                 v = htonl(v);
+                VLOG_DBG_RL(LOG_MODULE, &rl, "Value after endianing: %" PRIu32 " ", v);
                 tcp->tcp_csum = recalc_csum32(tcp->tcp_csum, tcp->tcp_seq, v);
                 memcpy(&tcp->tcp_seq, &v, OXM_LENGTH(act->field->header));
 
@@ -234,7 +237,7 @@ set_field(struct packet *pkt, struct ofl_action_set_field *act )
                 struct tcp_header *tcp = pkt->handle_std->proto->tcp;
                 uint32_t v = *(uint32_t*) act->field->value;
                 v += ntohl(tcp->tcp_ack);
-                v = htonl(v);
+                v = htonl(v);                
                 tcp->tcp_csum = recalc_csum32(tcp->tcp_csum, tcp->tcp_ack, v);
                 memcpy(&tcp->tcp_ack, &v, OXM_LENGTH(act->field->header));
 
