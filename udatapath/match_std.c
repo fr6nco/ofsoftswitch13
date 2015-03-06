@@ -37,7 +37,7 @@
 
 
 #include "vlog.h"
-#define LOG_MODULE VLM_match_e
+#define LOG_MODULE VLM_flow_e
 
 static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(60, 60);
 
@@ -369,7 +369,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
             return false;
         }
         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## match lookup did not failed");
-        
+
         /* At this point match length and has_mask are equal */
         has_mask = OXM_HASMASK(flow_mod_match->header);
         field_len =  OXM_LENGTH(flow_mod_match->header);
