@@ -337,6 +337,8 @@ strict_mask128(uint8_t *a, uint8_t *b, uint8_t *am, uint8_t *bm) {
 bool
 match_std_strict(struct ofl_match *a, struct ofl_match *b) {
 
+    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## HWill I get at least 1 line of log? we are comparing 2 flow mods");
+
     struct ofl_match_tlv *flow_mod_match;
     struct ofl_match_tlv *flow_entry_match;
     int field_len;
@@ -355,6 +357,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
         return false;
 
     /* Loop through the flow_mod match fields */
+    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Going for the for loop now");
     HMAP_FOR_EACH(flow_mod_match, struct ofl_match_tlv, hmap_node, &a->match_fields)
     {
         /* Check presence of match field in flow entry */
