@@ -117,6 +117,7 @@ flow_table_add(struct flow_table *table, struct ofl_msg_flow_mod *mod, bool chec
 
         /* if the entry equals, replace the old one */
         if (flow_entry_matches(entry, mod, true/*strict*/, false/*check_cookie*/)) {
+            VLOG_WARN_RL(LOG_MODULE, &rl, "Switch says, the same flow already exits so is rewritten");
             new_entry = flow_entry_create(table->dp, table, mod);
             *match_kept = true;
             *insts_kept = true;
@@ -141,6 +142,8 @@ flow_table_add(struct flow_table *table, struct ofl_msg_flow_mod *mod, bool chec
     table->stats->active_count++;
 
     new_entry = flow_entry_create(table->dp, table, mod);
+    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## New flow entry is created and placed to the end of the table");
+
     *match_kept = true;
     *insts_kept = true;
 
