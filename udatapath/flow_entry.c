@@ -114,6 +114,7 @@ flow_entry_matches(struct flow_entry *entry, struct ofl_msg_flow_mod *mod, bool 
 	}
     if (strict) {
         VLOG_WARN_RL(LOG_MODULE, &rl, "Comparing them strictly");
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########### entry priority %d, new mod priority %d", entry->stats->priority, mod->priority);
         return ( (entry->stats->priority == mod->priority) &&
                  match_std_strict((struct ofl_match *)mod->match,
                                 (struct ofl_match *)entry->stats->match));

@@ -39,6 +39,9 @@
 #include "vlog.h"
 #define LOG_MODULE VLM_flow_e
 
+static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(60, 60);
+
+
 /* Returns true if two 8 bit values match */
 static inline bool
 match_8(uint8_t *a, uint8_t *b) {
@@ -343,12 +346,12 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
 
     /* Both matches all wildcarded */
     if(!a->header.length && !b->header.length )
-        VLOG_ERR(LOG_MODULE, "THOMAS########## Both matches are wildcarded, matches");
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Both matches are wildcarded, matches");
         return true;
 
     /* If the matches differ in length, there is no reason to compare */
     if (a->header.length != b->header.length)
-        VLOG_ERR(LOG_MODULE, "THOMAS########## They have different header length, not matches");
+        VLOG_WARN_RL(LOG_MODULE, &rl,  "THOMAS########## They have different header length, not matches");
         return false;
 
     /* Loop through the flow_mod match fields */
@@ -367,50 +370,50 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
         flow_entry_val = flow_entry_match->value;
         if (has_mask)
         {
-            VLOG_ERR(LOG_MODULE, "THOMAS########## Has mask, doing something with it");
+            VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Has mask, doing something with it");
             field_len /= 2;
             flow_mod_mask = flow_mod_match->value + field_len;
             flow_entry_mask = flow_entry_match->value + field_len;
         }
         switch (field_len) {
             case 1:
-                VLOG_ERR(LOG_MODULE, "THOMAS########## comparing 1 len");
+                VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing 1 len");
                 if (has_mask) {
                     if (!strict_mask8(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask))
-                        VLOG_ERR(LOG_MODULE, "THOMAS########## dont match");
+                        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
                 }
                 else {
                     if (!match_8(flow_mod_val, flow_entry_val))
-                        VLOG_ERR(LOG_MODULE, "THOMAS########## dont match");
+                        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
                 }
                 break;
             case 2:
-                VLOG_ERR(LOG_MODULE, "THOMAS########## comparing 2 len");
+                VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing 2 len");
                 if (has_mask) {
                     if (!strict_mask16(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask))
-                        VLOG_ERR(LOG_MODULE, "THOMAS########## dont match");
+                        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
                 }
                 else {
                     if (!match_16(flow_mod_val, flow_entry_val))
-                        VLOG_ERR(LOG_MODULE, "THOMAS########## dont match");
+                        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
                 }
                 break;
             case 4:
-                VLOG_ERR(LOG_MODULE, "THOMAS########## comparing 4 len");
+                VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing 4 len");
                 if (has_mask) {
-                    VLOG_ERR(LOG_MODULE, "THOMAS########## comparing mod %d/%d with flow entry %d/%d", flow_mod_val, flow_mod_mask, flow_entry_val, flow_entry_mask);
+                    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing mod %d/%d with flow entry %d/%d", flow_mod_val, flow_mod_mask, flow_entry_val, flow_entry_mask);
                     if (!strict_mask32(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask))
-                        VLOG_ERR(LOG_MODULE, "THOMAS########## dont match");
+                        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
-                    VLOG_ERR(LOG_MODULE, "THOMAS########## strictk_mask32 says they are matching");
+                    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## strictk_mask32 says they are matching");
                 }
                 else {
                     if (!match_32(flow_mod_val, flow_entry_val))
-                        VLOG_ERR(LOG_MODULE, "THOMAS########## dont match");
+                        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
                 }
                 break;
@@ -453,7 +456,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
 
     /* If we get here, all match fields in flow_mod were equal to the ones in flow entry */
     /* There can't be more fields in the flow entry as the lengths are the same */
-    VLOG_ERR(LOG_MODULE, "THOMAS########## They match in function  match_std_strict");
+    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## They match in function  match_std_strict");
     return true;
 }
 
