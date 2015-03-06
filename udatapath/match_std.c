@@ -371,7 +371,6 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
             field_len /= 2;
             flow_mod_mask = flow_mod_match->value + field_len;
             flow_entry_mask = flow_entry_match->value + field_len;
-            VLOG_ERR(LOG_MODULE, "THOMAS########## flow mod mask is %u, flow entry mask is %u", flow_mod_mask, flow_entry_mask);
         }
         switch (field_len) {
             case 1:
@@ -409,7 +408,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
                 }
                 else {
                     if (!match_32(flow_mod_val, flow_entry_val))
-                        VLOG_WARN_RL(LOG_MODULE, "THOMAS########## dont match");
+                        VLOG_ERR(LOG_MODULE, "THOMAS########## dont match");
                         return false;
                 }
                 break;
