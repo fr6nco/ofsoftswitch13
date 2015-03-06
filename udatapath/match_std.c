@@ -402,9 +402,11 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
             case 4:
                 VLOG_ERR(LOG_MODULE, "THOMAS########## comparing 4 len");
                 if (has_mask) {
+                    VLOG_ERR(LOG_MODULE, "THOMAS########## comparing mod %d/%d with flow entry %d/%d", flow_mod_val, flow_mod_mask, flow_entry_val, flow_entry_mask);
                     if (!strict_mask32(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask))
                         VLOG_ERR(LOG_MODULE, "THOMAS########## dont match");
                         return false;
+                    VLOG_ERR(LOG_MODULE, "THOMAS########## strictk_mask32 says they are matching");
                 }
                 else {
                     if (!match_32(flow_mod_val, flow_entry_val))
@@ -451,6 +453,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
 
     /* If we get here, all match fields in flow_mod were equal to the ones in flow entry */
     /* There can't be more fields in the flow entry as the lengths are the same */
+    VLOG_ERR(LOG_MODULE, "THOMAS########## They match in function  match_std_strict");
     return true;
 }
 

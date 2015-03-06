@@ -109,11 +109,9 @@ flow_entry_has_out_group(struct flow_entry *entry, uint32_t group) {
 
 bool
 flow_entry_matches(struct flow_entry *entry, struct ofl_msg_flow_mod *mod, bool strict, bool check_cookie) {
-    VLOG_WARN_RL(LOG_MODULE, &rl, "Comparing cookies %d with %d", (entry->stats->cookie & mod->cookie_mask), (mod->cookie & mod->cookie_mask));
 	if (check_cookie && ((entry->stats->cookie & mod->cookie_mask) != (mod->cookie & mod->cookie_mask))) {
 		return false;
 	}
-    VLOG_WARN_RL(LOG_MODULE, &rl, "They dont match");
     if (strict) {
         VLOG_WARN_RL(LOG_MODULE, &rl, "Comparing them strictly");
         return ( (entry->stats->priority == mod->priority) &&
