@@ -348,10 +348,10 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
 
     /* Both matches all wildcarded */
     VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## First");
-    if(!a->header.length && !b->header.length )
+    /*if(!a->header.length && !b->header.length )
         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Both matches are wildcarded, matches");
         return true;
-
+    */
     /* If the matches differ in length, there is no reason to compare */
     VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Second");
     if (a->header.length != b->header.length)
