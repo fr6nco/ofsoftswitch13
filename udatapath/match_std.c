@@ -343,12 +343,12 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
 
     /* Both matches all wildcarded */
     if(!a->header.length && !b->header.length )
-        VLOG_ERR(LOG_MODULE, &rl, "THOMAS########## Both matches are wildcarded, matches");
+        VLOG_ERR(LOG_MODULE, "THOMAS########## Both matches are wildcarded, matches");
         return true;
 
     /* If the matches differ in length, there is no reason to compare */
     if (a->header.length != b->header.length)
-        VLOG_ERR(LOG_MODULE, &rl, "THOMAS########## They have different header length, not matches");
+        VLOG_ERR(LOG_MODULE, "THOMAS########## They have different header length, not matches");
         return false;
 
     /* Loop through the flow_mod match fields */
@@ -371,7 +371,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
             field_len /= 2;
             flow_mod_mask = flow_mod_match->value + field_len;
             flow_entry_mask = flow_entry_match->value + field_len;
-            VLOG_ERR(LOG_MODULE, "THOMAS########## flow mod mask is %d, flow entry mask is %d", flow_mod_mask, flow_entry_mask);
+            VLOG_ERR(LOG_MODULE, "THOMAS########## flow mod mask is %u, flow entry mask is %u", flow_mod_mask, flow_entry_mask);
         }
         switch (field_len) {
             case 1:
