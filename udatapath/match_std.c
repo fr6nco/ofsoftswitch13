@@ -354,9 +354,9 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
     */
     /* If the matches differ in length, there is no reason to compare */
     VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Second");
-    if (a->header.length != b->header.length)
-        VLOG_WARN_RL(LOG_MODULE, &rl,  "THOMAS########## They have different header length, not matches");
-        return false;
+    //if (a->header.length != b->header.length)
+    //    VLOG_WARN_RL(LOG_MODULE, &rl,  "THOMAS########## They have different header length, not matches");
+    //    return false;
 
     /* Loop through the flow_mod match fields */
     VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Going for the for loop now");
