@@ -302,7 +302,7 @@ strict_mask32(uint8_t *a, uint8_t *b, uint8_t *am, uint8_t *bm) {
     uint32_t *b1 = (uint32_t *) b;
     uint32_t *mask_a = (uint32_t *) am;
     uint32_t *mask_b = (uint32_t *) bm;
-    return ((*mask_a == *mask_b) && ((*a1 ^ *b1) & ~(*mask_a))) == 0;
+    return ((*mask_a == *mask_b) && ((*a1 ^ *b1) & (*mask_a))) == 0;
 }
 
 static inline bool
@@ -422,7 +422,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
             case 4:
                 VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing 4 len");
                 if (has_mask) {
-                    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing mod %" PRIu8 "/%" PRIu8 " with flow entry %" PRIu8 "/%" PRIu8 " ", flow_mod_val, flow_mod_mask, flow_entry_val, flow_entry_mask);
+                    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing mod %" PRIu8 "/%" PRIu8 " with flow entry %" PRIu8 "/%" PRIu8 " ", *flow_mod_val, *flow_mod_mask, *flow_entry_val, *flow_entry_mask);
                     if (!strict_mask32(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask)){
                         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
