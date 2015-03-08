@@ -347,13 +347,11 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
     bool has_mask;
 
     /* Both matches all wildcarded */
-    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## First");
     /*if(!a->header.length && !b->header.length )
         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Both matches are wildcarded, matches");
         return true;
     */
     /* If the matches differ in length, there is no reason to compare */
-    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Second");
     //if (a->header.length != b->header.length)
     //    VLOG_WARN_RL(LOG_MODULE, &rl,  "THOMAS########## They have different header length, not matches");
     //    return false;
@@ -365,16 +363,21 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
         /* Check presence of match field in flow entry */
         flow_entry_match = oxm_match_lookup(flow_mod_match->header, b);
         if (!flow_entry_match) {
-            VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## match lookup failed");
+            VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## match lookup failed, they dont match");
             return false;
         }
         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## match lookup did not failed, value is %d", flow_entry_match->value);
 
         /* At this point match length and has_mask are equal */
         has_mask = OXM_HASMASK(flow_mod_match->header);
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## has mask val %d", has_mask);
         field_len =  OXM_LENGTH(flow_mod_match->header);
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## field len val %d", field_len);
         flow_mod_val = flow_mod_match->value;
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## flow mod val %d", flow_mod_val);
         flow_entry_val = flow_entry_match->value;
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## flow entry val %d", flow_entry_val);
+        
         if (has_mask)
         {
             VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Has mask, doing something with it");
