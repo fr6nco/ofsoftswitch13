@@ -51,7 +51,7 @@ match_8(uint8_t *a, uint8_t *b) {
 /* Returns true if two masked 8 bit values match */
 static inline bool
 match_mask8(uint8_t *a, uint8_t *am, uint8_t *b) {
-    return ((~(am[0]) & (a[0] ^ b[0])) == 0);
+    return (((am[0]) & (a[0] ^ b[0])) == 0);
 }
 
 /* Returns true if two 16 bit values match */
@@ -284,7 +284,7 @@ packet_match(struct ofl_match *flow_match, struct ofl_match *packet){
 
 static inline bool
 strict_mask8(uint8_t *a, uint8_t *b, uint8_t *am, uint8_t *bm) {
-    return ((am[0] == bm[0]) && ((a[0] ^ b[0]) & ~am[0])) == 0;
+    return ((am[0] == bm[0]) && ((a[0] ^ b[0]) & am[0])) == 0;
 }
 
 static inline bool
@@ -293,7 +293,7 @@ strict_mask16(uint8_t *a, uint8_t *b, uint8_t *am, uint8_t *bm) {
     uint16_t *b1 = (uint16_t *) b;
     uint16_t *mask_a = (uint16_t *) am;
     uint16_t *mask_b = (uint16_t *) bm;
-    return ((*mask_a == *mask_b) && ((*a1 ^ *b1) & ~(*mask_a))) == 0;
+    return ((*mask_a == *mask_b) && ((*a1 ^ *b1) & (*mask_a))) == 0;
 }
 
 static inline bool
@@ -317,7 +317,7 @@ strict_mask64(uint8_t *a, uint8_t *b, uint8_t *am, uint8_t *bm) {
     uint64_t *b1 = (uint64_t *) b;
     uint64_t *mask_a = (uint64_t *) am;
     uint64_t *mask_b = (uint64_t *) bm;
-    return ((*mask_a == *mask_b) && ((*a1 ^ *b1) & ~(*mask_a))) == 0;
+    return ((*mask_a == *mask_b) && ((*a1 ^ *b1) & (*mask_a))) == 0;
 }
 
 static inline bool
