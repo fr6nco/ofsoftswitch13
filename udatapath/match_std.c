@@ -386,42 +386,49 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
             case 1:
                 VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing 1 len");
                 if (has_mask) {
-                    if (!strict_mask8(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask))
+                    if (!strict_mask8(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask)){
                         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
+                    }
                 }
                 else {
-                    if (!match_8(flow_mod_val, flow_entry_val))
+                    if (!match_8(flow_mod_val, flow_entry_val)){
                         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
+                    }
                 }
                 break;
             case 2:
                 VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing 2 len");
                 if (has_mask) {
-                    if (!strict_mask16(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask))
+                    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Flow has mask in 2 len");
+                    if (!strict_mask16(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask)){
                         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
+                    }
                 }
                 else {
-                    if (!match_16(flow_mod_val, flow_entry_val))
+                    if (!match_16(flow_mod_val, flow_entry_val)){
                         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
+                    }
                 }
                 break;
             case 4:
                 VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing 4 len");
                 if (has_mask) {
                     VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing mod %d/%d with flow entry %d/%d", flow_mod_val, flow_mod_mask, flow_entry_val, flow_entry_mask);
-                    if (!strict_mask32(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask))
+                    if (!strict_mask32(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask)){
                         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
+                    }
                     VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## strictk_mask32 says they are matching");
                 }
                 else {
-                    if (!match_32(flow_mod_val, flow_entry_val))
+                    if (!match_32(flow_mod_val, flow_entry_val)){
                         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;
+                    }
                 }
                 break;
             case 6:
