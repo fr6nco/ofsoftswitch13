@@ -43,7 +43,7 @@
 #include "vlog.h"
 #define LOG_MODULE VLM_flow_t
 
-static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(60, 60);
+static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(600, 600);
 
 uint32_t  oxm_ids[]={OXM_OF_IN_PORT,OXM_OF_IN_PHY_PORT,OXM_OF_METADATA,OXM_OF_ETH_DST,
                         OXM_OF_ETH_SRC,OXM_OF_ETH_TYPE, OXM_OF_VLAN_VID, OXM_OF_VLAN_PCP, OXM_OF_IP_DSCP,

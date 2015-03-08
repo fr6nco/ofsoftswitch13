@@ -65,7 +65,7 @@
 #define LOG_MODULE VLM_oxm_match
 #include "vlog.h"
 
-static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(1, 5);
+static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(10, 50);
 
 /* Possible masks for TLV OXM_ETH_DST_W. */
 static const uint8_t eth_all_0s[ETH_ADDR_LEN]
