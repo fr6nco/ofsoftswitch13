@@ -366,7 +366,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
             VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## match lookup failed, they dont match");
             return false;
         }
-        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## match lookup did not failed, value is %d", flow_entry_match->value);
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## match lookup did not failed, value is %" PRIu8 " ", flow_entry_match->value);
 
         /* At this point match length and has_mask are equal */
         has_mask = OXM_HASMASK(flow_mod_match->header);
@@ -374,18 +374,18 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
         field_len =  OXM_LENGTH(flow_mod_match->header);
         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## field len val %d", field_len);
         flow_mod_val = flow_mod_match->value;
-        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## flow mod val %d", flow_mod_val);
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## flow mod val %" PRIu8 " ", flow_mod_val);
         flow_entry_val = flow_entry_match->value;
-        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## flow entry val %d", flow_entry_val);
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## flow entry val %" PRIu8 " ", flow_entry_val);
 
         if (has_mask)
         {
             VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Has mask, doing something with it");
             field_len /= 2;
             flow_mod_mask = flow_mod_match->value + field_len;
-            VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Flow mod mask is %d", flow_mod_mask);
+            VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Flow mod mask is %" PRIu8 " ", flow_mod_mask);
             flow_entry_mask = flow_entry_match->value + field_len;
-            VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Flow entry mask is %d", flow_entry_mask);
+            VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Flow entry mask is %" PRIu8 " ", flow_entry_mask);
         }
         switch (field_len) {
             case 1:
@@ -422,7 +422,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
             case 4:
                 VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing 4 len");
                 if (has_mask) {
-                    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing mod %d/%d with flow entry %d/%d", flow_mod_val, flow_mod_mask, flow_entry_val, flow_entry_mask);
+                    VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## comparing mod %" PRIu8 "/%" PRIu8 " with flow entry %" PRIu8 "/%" PRIu8 " ", flow_mod_val, flow_mod_mask, flow_entry_val, flow_entry_mask);
                     if (!strict_mask32(flow_mod_val, flow_entry_val, flow_mod_mask, flow_entry_mask)){
                         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## dont match");
                         return false;

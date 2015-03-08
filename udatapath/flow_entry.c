@@ -49,7 +49,7 @@
 #include "vlog.h"
 #define LOG_MODULE VLM_flow_e
 
-static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(60, 60);
+static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(600, 600);
 
 struct group_ref_entry {
     struct list   node;
@@ -113,8 +113,8 @@ flow_entry_matches(struct flow_entry *entry, struct ofl_msg_flow_mod *mod, bool 
 		return false;
 	}
     if (strict) {
-        VLOG_WARN_RL(LOG_MODULE, &rl, "Comparing them strictly");
-        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########### entry priority %d, new mod priority %d", entry->stats->priority, mod->priority);
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########### entry priority %d, new mod priority %" PRIu8 " ", entry->stats->priority, mod->priority);
+
         return ( (entry->stats->priority == mod->priority) &&
                  match_std_strict((struct ofl_match *)mod->match,
                                 (struct ofl_match *)entry->stats->match));
