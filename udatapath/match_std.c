@@ -39,7 +39,7 @@
 #include "vlog.h"
 #define LOG_MODULE VLM_flow_e
 
-static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(60, 60);
+static struct vlog_rate_limit rl = VLOG_RATE_LIMIT_INIT(600, 600);
 
 
 /* Returns true if two 8 bit values match */
@@ -377,7 +377,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## flow mod val %d", flow_mod_val);
         flow_entry_val = flow_entry_match->value;
         VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## flow entry val %d", flow_entry_val);
-        
+
         if (has_mask)
         {
             VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Has mask, doing something with it");
