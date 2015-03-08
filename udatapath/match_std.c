@@ -368,7 +368,7 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
             VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## match lookup failed");
             return false;
         }
-        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## match lookup did not failed");
+        VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## match lookup did not failed, value is %d", flow_entry_match->value);
 
         /* At this point match length and has_mask are equal */
         has_mask = OXM_HASMASK(flow_mod_match->header);
@@ -380,7 +380,9 @@ match_std_strict(struct ofl_match *a, struct ofl_match *b) {
             VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Has mask, doing something with it");
             field_len /= 2;
             flow_mod_mask = flow_mod_match->value + field_len;
+            VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Flow mod mask is %d", flow_mod_mask);
             flow_entry_mask = flow_entry_match->value + field_len;
+            VLOG_WARN_RL(LOG_MODULE, &rl, "THOMAS########## Flow entry mask is %d", flow_entry_mask);
         }
         switch (field_len) {
             case 1:
